@@ -1,19 +1,16 @@
+var choices = ['rock', 'paper', 'scissors'];
+
 function computerPlay() {
-    var choices = ['Rock', 'Paper', 'Scissors'];
     var pick = choices[Math.floor(Math.random() * choices.length)];
 
-    return pick.toLowerCase();
+    return pick;
 }
 
 function playerPlay() {
-	let playerSelection = prompt("Pick rock, paper, or scissors.");
+	let pick = prompt("Pick rock, paper, or scissors.");
 	
-	return playerSelection.toLowerCase();
+	return pick.toLowerCase();
 }
-
-//if (choices1.indexOf(playerSelection) !== -1) {
-//		let playerSelection = prompt("Invalid input. \nPick rock, paper, or scissors.");
-//}
 
 function playRound(playerSelection, computerSelection) {	
     if (playerSelection == computerSelection) {
@@ -53,7 +50,13 @@ function playRound(playerSelection, computerSelection) {
 
 const computerSelection = computerPlay();
 //console.log(computerSelection);
-const playerSelection = playerPlay();
+playerSelection = playerPlay();
 //console.log(playerSelection);
+
+if (choices.indexOf(playerSelection.toLowerCase()) < 0) {
+	alert('Invalid input.');
+	playerSelection = playerPlay();
+	//console.log(playerSelection);
+}
 
 console.log(playRound(playerSelection, computerSelection));
