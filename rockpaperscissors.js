@@ -14,38 +14,36 @@ function playerPlay() {
 
 function playRound(playerSelection, computerSelection) {	
     if (playerSelection == computerSelection) {
-        alert('Draw! ' + (playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + ' and '+ computerSelection + ' are the same');
-    }
+		let result = ('Draw! ' + (playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + ' and '+ computerSelection + ' are the same');
+		
+	}
     else if (computerSelection == 'rock') {
 		switch(playerSelection) {
 			case 'paper':
-				alert('You win! ' + (playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + ' beats ' + computerSelection);
-				break;
+				result = ('You win! ' + (playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + ' beats ' + computerSelection);
 			case 'scissors':
-				alert('You lose! ' + (computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)) + ' beats ' + playerSelection);
-				break;
+				result = ('You lose! ' + (computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)) + ' beats ' + playerSelection);
 		}
     }
 	else if (computerSelection == 'paper') {
         switch(playerSelection) {
 			case 'scissors':
-				alert('You win! ' + (playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + ' beats ' + computerSelection);
-				break;
+				result = ('You win! ' + (playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + ' beats ' + computerSelection);
 			case 'rock':
-				alert('You lose! ' + (computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)) + ' beats ' + playerSelection);
-				break;
+				result = ('You lose! ' + (computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)) + ' beats ' + playerSelection);
 		}
     }
 	else if (computerSelection == 'scissors') {
         switch(playerSelection) {
 			case 'rock':
-				alert('You win! ' + (playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + ' beats ' + computerSelection);
-				break;
+				result = ('You win! ' + (playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + ' beats ' + computerSelection);
 			case 'paper':
-				alert('You lose! ' + (computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)) + ' beats ' + playerSelection);
-				break;
+				result = ('You lose! ' + (computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)) + ' beats ' + playerSelection);
 		}
     }
+	
+	alert(result);
+	return result;
 }
 
 const computerSelection = computerPlay();
@@ -59,4 +57,4 @@ if (choices.indexOf(playerSelection.toLowerCase()) < 0) {
 	//console.log(playerSelection);
 }
 
-console.log(playRound(playerSelection, computerSelection));
+//console.log(playRound(playerSelection, computerSelection));
