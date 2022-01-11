@@ -1,7 +1,7 @@
-var choices = ['rock', 'paper', 'scissors'];
+const choices = ['rock', 'paper', 'scissors'];
 
 function computerPlay() {
-    var pick = choices[Math.floor(Math.random() * choices.length)];
+    let pick = choices[Math.floor(Math.random() * choices.length)];
 
     return pick;
 }
@@ -51,25 +51,23 @@ function playRound(playerSelection, computerSelection) {
 				return result;
 		}
     }
-	
-	
 }
 
 function game() {
-	var currRound = 1
-	var playUntil = 5;
-	var playerWins = 0;
-	var computerWins = 0;
-	var winner = "";
+	let currRound = 1
+	let maxRounds = 5;
+	let playerWins = 0;
+	let computerWins = 0;
+	let winner = "";
 	
 	while (true) {
-		if (playerWins == Math.floor((playUntil/2))+1) {
+		if (playerWins == Math.floor((maxRounds/2))+1) {
 			winner = "PLAYER WINS";
 			console.log(winner);
 			return winner;
 			break;
 		}
-		else if (computerWins == Math.floor((playUntil/2))+1) {
+		else if (computerWins == Math.floor((maxRounds/2))+1) {
 			winner = "COMPUTER WINS";
 			console.log(winner);
 			return winner;
@@ -89,7 +87,6 @@ function game() {
 		}
 		
 		playRound(playerSelection, computerSelection);
-		//alert(result);
 		console.log(playRound(playerSelection, computerSelection));
 
 		if (typeof result !== undefined) {
@@ -114,10 +111,7 @@ function game() {
 			}
 		}
 		
-	}
-	
-	
-	
+	}	
 }
 
 game();
