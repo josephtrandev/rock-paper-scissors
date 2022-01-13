@@ -6,11 +6,11 @@ function computerPlay() {
     return pick;
 }
 
-function playerPlay() {
+/* function playerPlay() {
 	let pick = prompt("Pick rock, paper, or scissors.");
 	
 	return pick.toLowerCase();
-}
+} */
 
 function playRound(playerSelection, computerSelection) {
 	let win = ('You win! ' + (playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)) + ' beats ' + computerSelection);
@@ -59,6 +59,8 @@ function game() {
 	let playerWins = 0;
 	let computerWins = 0;
 	let winner = "";
+	
+	
 	
 	while (true) {
 		if (playerWins == Math.floor((maxRounds/2))+1) {
@@ -114,4 +116,33 @@ function game() {
 	}	
 }
 
-game();
+function buttonSelect(playerSelection) {
+	computerSelection = computerPlay();
+	
+	var content = document.querySelector('#results');
+	var newContent = document.createElement('div');
+	newContent.setAttribute('id', 'results');
+	newContent.textContent = playRound(playerSelection, computerSelection);
+	content.parentNode.replaceChild(newContent, content);	
+}
+
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', () => {
+	buttonSelect('rock');
+});
+
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', () => {
+	buttonSelect('paper');
+});
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', function (playerSelection) {
+	buttonSelect('scissors');
+});
+
+var results = document.querySelector('#results');
+var gameStart = 'Select your choice: ';
+results.innerHTML = gameStart;
+
+//game();
