@@ -53,14 +53,12 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-	let currRound = 1
+function checkWin() {
+	let currRound = 1;
 	let maxRounds = 5;
 	let playerWins = 0;
 	let computerWins = 0;
 	let winner = "";
-	
-	
 	
 	while (true) {
 		if (playerWins == Math.floor((maxRounds/2))+1) {
@@ -76,73 +74,70 @@ function game() {
 			break;
 		} 
 		
-		console.log("Round " + currRound);
+		/* console.log("Round " + currRound);
 		computerSelection = computerPlay();
 		console.log("Computer picks " + computerSelection);
 		playerSelection = playerPlay();
 		console.log("Player picks " + playerSelection);
 		
-		while (choices.indexOf(playerSelection.toLowerCase()) < 0) {
-			alert('Invalid input.');
-			playerSelection = playerPlay();
-			console.log("Player picks " + playerSelection);
-		}
-		
 		playRound(playerSelection, computerSelection);
-		console.log(playRound(playerSelection, computerSelection));
-
-		if (typeof result !== undefined) {
-			if (result.includes("win")) {
-				playerWins++;
-				currRound++;
-				console.log("Player wins: " + playerWins);
-				console.log("Computer wins: " + computerWins);
-				console.log(" ");
-			}
-			else if (result.includes("lose")) {
-				computerWins++;
-				currRound++;
-				console.log("Player wins: " + playerWins);
-				console.log("Computer wins: " + computerWins);
-				console.log(" ");
-			}
-			else if (result.includes("same")) {
-				console.log("Player wins: " + playerWins);
-				console.log("Computer wins: " + computerWins);
-				console.log(" ");
-			}
-		}
+		console.log(playRound(playerSelection, computerSelection)); */
 		
 	}	
 }
 
+const score = document.getElementById('score');
+	
+const player = document.createElement('p');
+player.setAttribute('id', 'player');
+player.textContent = "Player - 0";
+
+const cpu = document.createElement('p');
+cpu.setAttribute('id', 'cpu');
+cpu.textContent = "CPU - 0";
+
+score.appendChild(player);
+score.appendChild(cpu);
+
 function buttonSelect(playerSelection) {
 	computerSelection = computerPlay();
 	
-	var content = document.querySelector('#results');
+	var content = document.getElementById('results');
 	var newContent = document.createElement('div');
 	newContent.setAttribute('id', 'results');
 	newContent.textContent = playRound(playerSelection, computerSelection);
 	content.parentNode.replaceChild(newContent, content);	
+	scoreUpdate(result);
 }
 
-const rock = document.querySelector('#rock');
+const rock = document.getElementById('rock');
 rock.addEventListener('click', () => {
 	buttonSelect('rock');
 });
 
-const paper = document.querySelector('#paper');
+const paper = document.getElementById('paper');
 paper.addEventListener('click', () => {
 	buttonSelect('paper');
 });
 
-const scissors = document.querySelector('#scissors');
+const scissors = document.getElementById('scissors');
 scissors.addEventListener('click', function (playerSelection) {
 	buttonSelect('scissors');
 });
 
-var results = document.querySelector('#results');
+function scoreUpdate(result) {
+	if (result.includes("win")) {
+		const playerScore = document.getElementById('player');
+		const pNum = playerScore.innerText;
+		playerScore.innerText = 'Player - ' + (parseInt(pNum.slice(-1)) + 1);
+	}
+	else if (result.includes("lose")) {
+		const cpuScore = document.getElementById('cpu');
+		const cNum = cpuScore.innerText;
+		cpuScore.innerText = 'CPU - ' + (parseInt(cNum.slice(-1)) + 1);
+	}
+}
+
+var results = document.getElementById('results');
 var gameStart = 'Select your choice: ';
 results.innerHTML = gameStart;
-
-//game();
